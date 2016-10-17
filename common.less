@@ -79,8 +79,6 @@ a, a:visited {
 }
 
 .page-dots {
-  position: absolute;
-  bottom: 0;
   display: block;
   width: 100%;
   padding: 0;
@@ -89,10 +87,8 @@ a, a:visited {
   li {
     position: relative;
     display: inline-block;
-    width: .1rem;
-    height: .1rem;
     margin: 0;
-    padding: 0;
+    padding: 0 .05rem;
     cursor: pointer;
     button {
       border-radius: 50%;
@@ -101,11 +97,22 @@ a, a:visited {
       display: block;
       width: .1rem;
       height: .1rem;
-      padding: 5px;
+      padding: .05rem;
       cursor: pointer;
       color: transparent;
+      background-color: @super-light-blue;
       border: 0;
       outline: none;
+      &:hover{
+        background-color: @light-blue-hover;
+      }
+    }
+    &.active{
+      button{
+        width: .15rem;
+        height: .15rem;
+        background-color: @light-blue-visited;
+      }
     }
   }
 } 
