@@ -1,0 +1,77 @@
+@light-white: rgba(255, 255, 255, .5);
+@light-white-hover: rgba(255, 255, 255, 1);
+@light-white-visited: rgba(255, 255, 255, .7);
+
+
+@light-blue: rgba(127, 140, 141, .5);
+@light-blue-hover: rgba(127, 140, 141, 1);
+@light-blue-visited: rgba(127, 140, 141, .7);
+
+@dark-green: rgba(66, 185, 131, 1);
+@green: rgba(66, 185, 131, .7);
+@light-green: rgba(66, 185, 131, .4);
+
+.links-light-white a{
+  .link-color('light-white', @light-white);
+}
+.links-light-blue a{
+  .link-color('light-blue', @light-blue);
+}
+
+.link-color(@n, @c){
+  color: @c;
+  @cc: '@{n}-visited';
+  @ccc: '@{n}-hover';
+  &:visited{
+    color: @@cc;
+  }
+  &:hover{
+    color: @@ccc;
+  }
+}
+
+html {
+  font-size: 100px;
+}
+body{
+  font-family: "proxima-nova", serif;
+  font-size: .16rem;
+  padding: 0;
+  margin: 0;
+}
+a, a:visited {
+  letter-spacing: .02rem;
+  background: transparent;
+  display: inline;
+  font-weight: 400;
+  text-decoration: none;
+}
+.sub-links a {
+  font-size: .12rem;
+  letter-spacing: 0;
+}
+*::selection {
+  background-color: #000;
+  color: #fff;
+}
+.name-design {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .8);
+  font-size: .162rem;
+  letter-spacing: .02rem;
+  padding: .3rem 0 0;
+  text-shadow: 0 0 .5rem rgba(255,255,255, .6);
+}
+.name-middle {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  width: .5rem;
+  height: .5rem;
+  line-height: .4rem;
+  font-size: .14rem;
+  position: relative;
+  display: inline-block;
+  padding: .05rem .02rem;
+  transform: rotateZ(45deg) translateY(-25%) translateX(-25%);
+}
