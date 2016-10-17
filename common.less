@@ -75,3 +75,35 @@ a, a:visited {
   padding: .05rem .02rem;
   transform: rotateZ(45deg) translateY(-25%) translateX(-25%);
 }
+
+.page-dots {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  li {
+    position: relative;
+    display: inline-block;
+    width: .1rem;
+    height: .1rem;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    button {
+      border-radius: 50%;
+      font-size: 0;
+      line-height: 0;
+      display: block;
+      width: .1rem;
+      height: .1rem;
+      padding: 5px;
+      cursor: pointer;
+      color: transparent;
+      border: 0;
+      outline: none;
+    }
+  }
+} 
