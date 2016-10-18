@@ -1,3 +1,5 @@
+import './index.less';
+
 var slideContents = [
   {
     type: 'app',
@@ -55,3 +57,13 @@ function setSlideContent(l, k){
     progress = false
   }, 500)
 }
+document.querySelector('.fa.previous').addEventListener('click', function(){
+  setSlideContent(-1)
+})
+document.querySelector('.fa.previous').addEventListener('click', function(){
+  setSlideContent(1)
+})
+
+
+
+

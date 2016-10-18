@@ -1,0 +1,34 @@
+{
+  "name": "me",
+  "version": "1.0.0",
+  "description": "about me",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrsnl-darcy/me.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "ren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hrsnl-darcy/me/issues"
+  },
+  "homepage": "https://github.com/hrsnl-darcy/me#readme"
+}
