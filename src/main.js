@@ -1,4 +1,5 @@
-import './index.less';
+import 'font-awesome/css/font-awesome.css'
+import './less/main.less';
 
 var slideContents = [
   {
@@ -23,7 +24,7 @@ var slideContents = [
 var i = 0, j = slideContents.length, progress = false;
 setInterval(function(){
   setSlideContent(1)
-}, 6000)
+}, 5000)
 function setSlideContent(l, k){
   if (progress)
     return 0
