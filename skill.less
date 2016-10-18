@@ -1,0 +1,53 @@
+#SKILL{
+  background-color: @light-grey;
+  .slide {
+    min-height: 4rem;
+  }
+  .left-part{
+    float: right;
+    h1{
+      font-size: .3rem;
+      letter-spacing: .02rem;
+      font-weight: normal;
+      color: @black;
+      font-family: monospace, 'Helvetica Neue', Arial, sans-serif;
+    }
+    h3{
+      text-indent: .15rem;
+      font-style: italic;
+      color: @black;
+      font-weight: 100;
+    }
+  }
+  .right-part{
+    width: 45%;
+    float: left;
+    background: transparent;
+    font-size: .2rem;
+    color: @light-black;
+    li{
+      padding: .05rem 0;
+    }
+    .fa{
+      color: @light-sky-blue;
+      margin-right: .05rem;
+    }
+
+
+  }
+  @media (max-width: 975px) {
+    .slide {
+      .left-part {
+        text-align: center;
+        width: 100%;
+        float: none;
+      }
+      .right-part {
+        float: none;
+        text-align: center;
+        margin: 0 auto;
+        float: none;
+      }
+    }
+  }
+}

@@ -23,10 +23,10 @@
   </header>
   
   <section id="SAYING">
-    <i class="fa fa-angle-double-left previous"></i>  
-    <i class="fa fa-angle-double-right next"></i> 
+    <i class="fa fa-angle-double-left previous" onclick="setSlideContent(-1)"></i>  
+    <i class="fa fa-angle-double-right next" onclick="setSlideContent(1)"></i> 
     
-    <div class="slide what-i-do">
+    <div class="slide what-i-do" id="slide">
       <div class="fadeIn left-part">
           <h1>
             Create incredible apps.
@@ -44,17 +44,96 @@
       </div>
       
     </div>
+
     <ul class="page-dots">
       <li class="active" aria-hidden="true">
-        <button type="button" data-role="none" role="button" aria-required="false" tabindex="0"></button>
+        <button type="button" data-role="none" role="button" aria-required="false" tabindex="0" onclick="setSlideContent('', 0)"></button>
       </li>
       <li class="" aria-hidden="true">
-        <button type="button" data-role="none" role="button" aria-required="false" tabindex="0"></button>
+        <button type="button" data-role="none" role="button" aria-required="false" tabindex="0" onclick="setSlideContent('', 1)"></button>
+      </li>
+      <li class="" aria-hidden="true">
+        <button type="button" data-role="none" role="button" aria-required="false" tabindex="0" onclick="setSlideContent('', 2)"></button>
       </li>
     </ul> 
 
   </section>
   <section id="SKILL">
+    <div class="slide my-skill" id="skill">
+      <div class="left-part">
+        
+        <h1>Quick inroduction</h1>
+        <br>
+        <h3>
+          Hello, this is 'ren' work at position of Front-End,
+          graduated from a non-name school. I'm excited to been
+          a web developer & more lucky to be a front-end developer.
+        </h3>
+        <h3>
+          You can see clearly what i good at and what knows left side.
+          i think, what we do make the world better.
+        </h3>
+      </div>
+      <div class="right-part">
+        <ul>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            html5
+            <progress value="91" max="100"></progress>
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            css3
+            <progress value="95" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            es6
+            <progress value="61" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            vue
+            <progress value="77" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            react
+            <progress value="65" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            angular
+            <progress value="85" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            node
+            <progress value="50" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            go
+            <progress value="40" max="100"></progress>
+
+          </li>
+          <li>
+            <i class="fa fa-check-square-o"></i>
+            ruby
+            <progress value="15" max="100"></progress>
+
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
     
   </section>
 
@@ -114,7 +193,8 @@
       </nav>
     </div>
   </footer>
-
+  
+  <script src="index.js"></script>
   
 </body>
 </html>
