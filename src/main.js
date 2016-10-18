@@ -1,7 +1,7 @@
 import 'font-awesome/css/font-awesome.css'
 import './less/main.less';
 
-var slideContents = [
+let slideContents = [
   {
     type: 'app',
     h1: 'Create incredible apps.',
@@ -21,11 +21,11 @@ var slideContents = [
     btns: ['Check It Now', 'View More'],
   }
 ]
-var i = 0, j = slideContents.length, progress = false;
+let i = 0, j = slideContents.length, progress = false;
 setInterval(function(){
   setSlideContent(1)
 }, 5000)
-function setSlideContent(l, k){
+window.setSlideContent = function(l, k){
   if (progress)
     return 0
   progress = true
@@ -34,7 +34,7 @@ function setSlideContent(l, k){
     i = k
   i == j ? i = 0:0
   
-  var slide = document.getElementById('slide'),
+  let slide = document.getElementById('slide'),
       h1 = slide.querySelector('h1'),
       h3 = slide.querySelector('h3'),
       dots = document.querySelector('.page-dots'),
@@ -56,12 +56,16 @@ function setSlideContent(l, k){
 
   setTimeout(function(){
     progress = false
-  }, 500)
+  }, 0)
 }
 document.querySelector('.fa.previous').addEventListener('click', function(){
   setSlideContent(-1)
 })
-document.querySelector('.fa.previous').addEventListener('click', function(){
+document.querySelector('.fa.next').addEventListener('click', function(){
+  setSlideContent(1)
+})
+
+document.querySelector('.fa.next').addEventListener('click', function(){
   setSlideContent(1)
 })
 
