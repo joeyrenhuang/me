@@ -7,10 +7,10 @@
       padding-top:  0;
     }
   }
-  .slide:nth-child(odd) .left-part,{
+  .slide.my-experience:nth-child(odd) .left-part,{
     float: right;
   }
-  .slide:nth-child(odd) .right-part,{
+  .slide.my-experience:nth-child(odd) .right-part,{
     float: left;
   }
   .left-part{
@@ -72,9 +72,10 @@
   
 }
 #SKILL>.my-experience{
+  position: relative;
 
   &>.left-part, &>.right-part{
-    width: 3.5rem;
+    // width: 3.5rem;
     animation-timing-function: ease-in-out;
     // animation-timing-function: cubic-bezier(0.29, 1.85, .76, 0);
     animation: slideleft 2s forwards;
@@ -83,8 +84,8 @@
   &>.slide{
     position: absolute;
     width: 100%;
+    top: 0;
     left: 150%;
-    min-height: 0;
     animation-timing-function: ease-in-out;
     // animation-timing-function: cubic-bezier(0.29, 1.85, .76, 0);
     animation: slideleftF 2s forwards;
@@ -102,7 +103,7 @@
     left: 100%;
   }
   100%{
-    left: 10%;
+    left: 0;
   }
 }
 @-webkit-keyframes slideleft {
@@ -111,7 +112,7 @@
   }
   100%{
     // float: left;
-    transform: translateX(-300%);
+    transform: translateX(-400%);
   }
 }
 
@@ -120,10 +121,10 @@
     .left-part {
       text-align: center;
       width: 100%;
-      float: none;
+      float: none !important;
     }
     .right-part {
-      float: none;
+      float: none !important;
       text-align: center;
       margin: 0 auto;
       float: none;
