@@ -2,9 +2,19 @@
   background-color: @light-grey;
   .slide {
     min-height: 4rem;
+    &>div{
+      background: transparent;
+      padding-top:  0;
+    }
+  }
+  .slide:nth-child(odd) .left-part,{
+    float: right;
+  }
+  .slide:nth-child(odd) .right-part,{
+    float: left;
   }
   .left-part{
-    float: right;
+    
     h1{
       font-size: .3rem;
       letter-spacing: .02rem;
@@ -21,7 +31,6 @@
   }
   .right-part{
     width: 45%;
-    float: left;
     background: transparent;
     font-size: .2rem;
     color: @light-black;
@@ -32,22 +41,92 @@
       color: @light-sky-blue;
       margin-right: .05rem;
     }
+  }
 
+  .slide.my-experience{
+    &>.right-part{
+      background: url(../img/suzhoumap.png) top center no-repeat;
+      .icon-row {
+        position: relative;
+        top: 80%;
+        font-size: .16rem;
+        color: @light-blue-hover;
+        .fa{
+          color: green;
+
+        }
+        .red .fa{
+          float: right;
+          margin: 0 .15rem;
+          color: @dark-grey;
+          &:hover{
+            color: red;
+          }
+        }
+        a:visited .fa{
+          color: red;
+        }
+      }
+    }
+  }
+  
+}
+#SKILL>.my-experience{
+
+  &>.left-part, &>.right-part{
+    width: 3.5rem;
+    animation-timing-function: ease-in-out;
+    // animation-timing-function: cubic-bezier(0.29, 1.85, .76, 0);
+    animation: slideleft 2s forwards;
 
   }
-  @media (max-width: 975px) {
-    .slide {
-      .left-part {
-        text-align: center;
-        width: 100%;
-        float: none;
-      }
-      .right-part {
-        float: none;
-        text-align: center;
-        margin: 0 auto;
-        float: none;
-      }
+  &>.slide{
+    position: absolute;
+    width: 100%;
+    left: 150%;
+    min-height: 0;
+    animation-timing-function: ease-in-out;
+    // animation-timing-function: cubic-bezier(0.29, 1.85, .76, 0);
+    animation: slideleftF 2s forwards;
+
+  }
+  
+
+}
+
+@-webkit-keyframes expand {
+
+}
+@-webkit-keyframes slideleftF {
+  0%{
+    left: 100%;
+  }
+  100%{
+    left: 10%;
+  }
+}
+@-webkit-keyframes slideleft {
+  0%{
+    // float: left;
+  }
+  100%{
+    // float: left;
+    transform: translateX(-300%);
+  }
+}
+
+@media (max-width: 975px) {
+  .slide {
+    .left-part {
+      text-align: center;
+      width: 100%;
+      float: none;
+    }
+    .right-part {
+      float: none;
+      text-align: center;
+      margin: 0 auto;
+      float: none;
     }
   }
 }

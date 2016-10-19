@@ -10,25 +10,27 @@ let slideContents = [
   },
   {
     type: 'function',
-    h1: 'plentiful functional web.',
+    h1: 'Plentiful functional web.',
     h3: 'fuctional platform is still essensial in HTML5 model.<br>Do something easy office / homework just browser.',
     btns: ['Check It Now', 'View More'],
   },
   {
     type: 'sap',
-    h1: 'popular Single Page',
+    h1: 'Popular Single Page',
     h3: 'most popular single page site, with vue / react / angular.<br>once created, run everywhere, that\'s it.',
     btns: ['Check It Now', 'View More'],
   }
 ]
 let i = 0, j = slideContents.length, progress = false;
 setInterval(function(){
+  if (progress)
+    return 0
   setSlideContent(1)
 }, 5000)
 window.setSlideContent = function(l, k){
-  if (progress)
-    return 0
+  
   progress = true
+
   i += l || 0
   if (k)
     i = k
@@ -56,7 +58,7 @@ window.setSlideContent = function(l, k){
 
   setTimeout(function(){
     progress = false
-  }, 0)
+  }, 1000)
 }
 document.querySelector('.fa.previous').addEventListener('click', function(){
   setSlideContent(-1)
