@@ -3,20 +3,21 @@ var path = require('path')
 var assetsPath = function (_path) {
   return path.posix.join('static', _path)
 }
+console.log(__dirname)
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+let extractLESS = new ExtractTextPlugin('static/css/[name].css');
 
 module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: "src/build.js"
+    filename: "static/build.js"
   },
   resolve: {
     extensions: ['', '.js'],
-    fallback:[path.join(__dirname, './node_modules')],
-    alias: {
-      'src': path.resolve(__dirname, './src')
-    }
+    fallback:[path.join(__dirname, './node_modules')]
+   
   },
   module: {
     loaders: [
@@ -29,12 +30,17 @@ module.exports = {
         }
       },
       {test: /\.css$/, loader: 'style!css'},
-      {test: /\.less$/, loader: "style!css!less"},
+      // {test: /\.less$/, loader: "style!css!less"},
+      { test: /\.less$/i, loader: extractLESS.extract(['css','less'], {
+        // fix bug with  extractLESS = new ExtractTextPlugin('static/css/[name].css');    ***static/css***
+        publicPath: '../../'
+      })},
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,
+          // name: 'img/[name].[ext]?[hash]'
           name: assetsPath('img/[name].[ext]?[hash]')
         }
       },
@@ -43,6 +49,7 @@ module.exports = {
         loader: 'url',
         query: {
           limit: 10000,
+          // name: 'fonts/[name].[hash:7].[ext]'
           name: assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
@@ -55,6 +62,8 @@ module.exports = {
   devtool: '#eval-source-map',
 
   plugins:[
+
+    extractLESS,
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -79,6 +88,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -90,11 +100,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.OccurenceOrderPlugin()
-
-    
-    
-    // ,
-    // new webpack.LoaderOptionsPlugin()
     
   ])
 }
