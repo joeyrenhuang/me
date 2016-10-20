@@ -1,21 +1,13 @@
 #SKILL{
   background-color: @light-grey;
+  overflow: hidden;
+  overflow-y: auto;
   .slide {
-    min-height: 4rem;
-    &>div{
-      background: transparent;
-      padding-top:  0;
-    }
+    min-height: 4.5rem;
   }
-  .slide.my-experience:nth-child(odd) .left-part,{
-    float: right;
-  }
-  .slide.my-experience:nth-child(odd) .right-part,{
-    float: left;
-  }
-  .left-part{
-    
+  .text-part{
     h1{
+      margin-top: 0;
       font-size: .3rem;
       letter-spacing: .02rem;
       font-weight: normal;
@@ -23,15 +15,14 @@
       font-family: monospace, 'Helvetica Neue', Arial, sans-serif;
     }
     h3{
-      text-indent: .15rem;
+      text-indent: .4rem;
       font-style: italic;
       color: @black;
       font-weight: 100;
     }
   }
-  .right-part{
-    width: 45%;
-    background: transparent;
+
+  .img-part{
     font-size: .2rem;
     color: @light-black;
     li{
@@ -41,93 +32,50 @@
       color: @light-sky-blue;
       margin-right: .05rem;
     }
-  }
+    .icon-row {
+      position: relative;
+      top: 80%;
+      font-size: .16rem;
+      color: @light-blue-hover;
+      .fa{
+        color: green;
 
-  .slide.my-experience{
-    &>.right-part{
-      background: url(../img/suzhoumap.png) top center no-repeat;
-      .icon-row {
-        position: relative;
-        top: 80%;
-        font-size: .16rem;
-        color: @light-blue-hover;
-        .fa{
-          color: green;
-
-        }
-        .red .fa{
-          float: right;
-          margin: 0 .15rem;
-          color: @dark-grey;
-          &:hover{
-            color: red;
-          }
-        }
-        a:visited .fa{
+      }
+      .red .fa{
+        float: right;
+        margin: 0 .05rem;
+        color: @dark-grey;
+        &:hover{
           color: red;
         }
       }
+      a:visited .fa{
+        color: red;
+      }
     }
   }
-  
 }
-#SKILL>.my-experience{
+
+// 我的经验区左滑动
+.my-experience {
   position: relative;
-
-  &>.left-part, &>.right-part{
-    // width: 3.5rem;
-    animation-timing-function: ease-in-out;
-    // animation-timing-function: cubic-bezier(0.29, 1.85, .76, 0);
-    animation: slideleft 2s forwards;
-
+  .text-part, .img-part{
+    transition: all 1.5s ease-in-out;
   }
-  &>.slide{
+  .slide{
     position: absolute;
     width: 100%;
     top: 0;
-    left: 150%;
-    animation-timing-function: ease-in-out;
-    // animation-timing-function: cubic-bezier(0.29, 1.85, .76, 0);
-    animation: slideleftF 2s forwards;
-
+    left: 100rem;
+    transition: all 1.5s ease-in-out;
   }
-  
 
-}
-
-@-webkit-keyframes expand {
-
-}
-@-webkit-keyframes slideleftF {
-  0%{
-    left: 100%;
-  }
-  100%{
-    left: 0;
-  }
-}
-@-webkit-keyframes slideleft {
-  0%{
-    // float: left;
-  }
-  100%{
-    // float: left;
-    transform: translateX(-400%);
-  }
-}
-
-@media (max-width: 975px) {
-  .slide {
-    .left-part {
-      text-align: center;
-      width: 100%;
-      float: none !important;
+  &.slide-left{
+    &>.text-part, &>.img-part{
+      transform: translateX(-400%);
     }
-    .right-part {
-      float: none !important;
-      text-align: center;
-      margin: 0 auto;
-      float: none;
+    &>.slide{
+      left: 0;
     }
   }
 }

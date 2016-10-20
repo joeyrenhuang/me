@@ -4,3 +4,4 @@ static
 /static
 dist
 /dist
+.npm-debug.log

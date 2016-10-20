@@ -4,23 +4,27 @@ import './less/main.less';
 let slideContents = [
   {
     type: 'app',
+    img: 'phone',
     h1: 'Create incredible apps.',
     h3: 'smooth and quickly update with excellent performance.<br>makeing wonderful responsive user experience.',
     btns: ['Get The Case', 'View More'],
   },
   {
     type: 'function',
+    img: 'windows',
     h1: 'Plentiful functional web.',
     h3: 'fuctional platform is still essensial in HTML5 model.<br>Do something easy office / homework just browser.',
     btns: ['Check It Now', 'View More'],
   },
   {
     type: 'sap',
+    img: 'ipad',
     h1: 'Popular Single Page',
     h3: 'most popular single page site, with vue / react / angular.<br>once created, run everywhere, that\'s it.',
     btns: ['Check It Now', 'View More'],
   }
 ]
+// 头部页面切换
 let i = 0, j = slideContents.length, progress = false;
 setInterval(function(){
   if (progress)
@@ -36,12 +40,14 @@ window.setSlideContent = function(l, k){
     i = k
   i == j ? i = 0:0
   
-  let slide = document.getElementById('slide'),
+  let slide = document.querySelector('#SAYING .slide'),
+      imgPart = slide.querySelector('.img-part'),
       h1 = slide.querySelector('h1'),
       h3 = slide.querySelector('h3'),
       dots = document.querySelector('.page-dots'),
       slideContent = slideContents[i];
-  slide.setAttribute('slide-type', slideContent.type)
+
+  imgPart.className = 'img-part ' + slideContent.img
   h1.innerHTML = slideContent.h1
   h3.innerHTML = slideContent.h3
 
@@ -60,6 +66,7 @@ window.setSlideContent = function(l, k){
     progress = false
   }, 1000)
 }
+
 document.querySelector('.fa.previous').addEventListener('click', function(){
   setSlideContent(-1)
 })
@@ -71,6 +78,7 @@ document.querySelector('.fa.next').addEventListener('click', function(){
   setSlideContent(1)
 })
 
+//MENU
 document.querySelector('header nav a.collapse').addEventListener('click', function(){
   if (this.parentNode.className.indexOf('open') != -1){
     this.parentNode.className = this.parentNode.className.replace('open', '')
@@ -80,6 +88,57 @@ document.querySelector('header nav a.collapse').addEventListener('click', functi
     this.className += ' open'
   }
 })
+
+
+// slide left
+window.addEventListener('scroll', (evt)=>{
+  scrollMyExperience(evt)
+})
+
+
+let delay = 0
+let preScrollY = 0
+
+let scrollMyExperience = (evt)=>{
+
+  let dY = window.scrollY - preScrollY
+
+  preScrollY = window.scrollY
+
+  let e = document.querySelector('#SKILL>.my-experience')
+  let windowHeight = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+
+  if  ( dY >= 0 
+    && ( (windowHeight + window.scrollY) > (e.offsetTop + e.clientHeight * 2) || ( (windowHeight + window.scrollY) >= (document.body.clientHeight - 50) ) ) ) {
+
+      let animateEles = document.querySelectorAll('#SKILL .my-experience:not(.slide-left)')
+      if (!animateEles[1])
+        return false
+      let animateEle = animateEles[0]
+
+      if (delay) {
+         evt.preventDefault()
+         evt.stopPropagation()
+         return false
+      }
+      evt.preventDefault()
+      evt.stopPropagation()
+
+      delay = 200
+      setTimeout(()=> delay = 0, delay)
+      animateEle.className += " slide-left"
+  }
+
+  if ( (windowHeight + window.scrollY) < (e.offsetTop + e.clientHeight) ) {
+    document.querySelectorAll('#SKILL .my-experience.slide-left').forEach((e, i)=>{
+      e.className = e.className.replace('slide-left', '');
+    })
+  }
+      
+}
+
 
 
 

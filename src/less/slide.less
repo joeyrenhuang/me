@@ -24,27 +24,9 @@
     min-height: 5rem;
     max-width: 8rem;
 }
-
-@media (max-width: 975px) {
-  .slide {
-    .left-part {
-      text-align: center;
-      width: 100%;
-      float: none;
-    }
-    .right-part {
-      float: none;
-      text-align: center;
-      margin: 0 auto;
-      float: none;
-      min-width: 4rem;
-    }
-  }
-}
-
-.left-part{
+.text-part {
   width: 3.7rem;
-  padding-top: .25rem;
+  margin-top: .45rem;
   float: left;
   h1 {
     color: @green;
@@ -75,26 +57,63 @@
     font-family: "AvenirNextLTPro-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     opacity: 1;
   }
-
 }
 
-.right-part {
+
+.img-part{
   float: right;
   min-height: 100%;
-  width: 40%;
-  height: 3.5rem;
+  width: 45%;
+  height: 4rem;
 
   margin-top: .45rem;
   background-position: center;   
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(../img/phone.png);
+
+  &.phone{
+    background-image: url('../img/phone.png');
+  }
+  &.windows{
+    background-image: url("../img/windows.png");
+  }
+  &.ipad{
+    background-image: url("../img/ipad.png");
+  }
+
+  &.suzhou{
+    background: url("../img/suzhoumap.png") top center no-repeat;
+  }
+
 }
-[slide-type="function"] .right-part{
-  // background-size: contai;
-  background-image: url("../img/windows.png")
+.slide.reverse{
+  .text-part{
+    float: right;
+  }
+  .img-part{
+    float: left;
+  }
 }
-[slide-type="sap"] .right-part{
-  // background-size: cover;
-  background-image: url("../img/ipad.png")
+
+
+
+@media (max-width: 975px) {
+  .slide {
+    .text-part {
+      text-align: center;
+      width: 100%;
+      padding-left: .15rem;
+      padding-right: .15rem;
+      float: none;
+    }
+    .right-part {
+      float: none;
+      text-align: center;
+      margin: 0 auto;
+      float: none;
+      min-width: 4rem;
+    }
+  }
 }
+
+
