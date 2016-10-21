@@ -1,10 +1,10 @@
 #SKILL{
   background-color: @light-grey;
   overflow: hidden;
-  overflow-y: auto;
   .slide {
-    min-height: 4rem;
+    min-height: 4.5rem;
   }
+
   .text-part{
     h1{
       font-size: .3rem;
@@ -21,47 +21,16 @@
     }
   }
 
-  .img-part{
-    font-size: .2rem;
-    color: @light-black;
-    li{
-      padding: .05rem 0;
-    }
-    .fa{
-      color: @light-sky-blue;
-      margin-right: .05rem;
-    }
-    .icon-row {
-      position: absolute;
-      text-align: left;
-      width: 100%;
-      top: 3rem;
-      font-size: .16rem;
-      color: @light-blue-hover;
-      .fa{
-        color: green;
-
-      }
-      .red .fa{
-        float: right;
-        margin: 0 .05rem;
-        color: @dark-grey;
-        &:hover{
-          color: red;
-        }
-      }
-      a:visited .fa{
-        color: red;
-      }
-    }
-  }
+  
 }
+
 
 // 我的经验区左滑动
 .my-experience {
   position: relative;
   .text-part, .img-part{
     transition: all 1.5s ease-in-out;
+    margin-top: 0;
   }
   .slide{
     position: absolute;

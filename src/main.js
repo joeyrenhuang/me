@@ -98,8 +98,9 @@ window.addEventListener('scroll', (evt)=>{
 
 let delay = 0
 let preScrollY = 0
-
+let manual = false
 let scrollMyExperience = (evt)=>{
+  
 
   let dY = window.scrollY - preScrollY
 
@@ -110,8 +111,12 @@ let scrollMyExperience = (evt)=>{
       || document.documentElement.clientHeight
       || document.body.clientHeight;
 
-  if  ( dY >= 0 
-    && ( (windowHeight + window.scrollY) > (e.offsetTop + e.clientHeight * 2) || ( (windowHeight + window.scrollY) >= (document.body.clientHeight - 50) ) ) ) {
+  if  ( dY >= 20 
+    && ( (windowHeight + window.scrollY) > (e.offsetTop + e.clientHeight * 1.5) || ( (windowHeight + window.scrollY) >= (document.body.clientHeight - 50) ) ) ) {
+
+      if(manual){
+        return 0;
+      }
 
       let animateEles = document.querySelectorAll('#SKILL .my-experience:not(.slide-left)')
       if (!animateEles[1])
@@ -129,63 +134,94 @@ let scrollMyExperience = (evt)=>{
       delay = 1000
       setTimeout(()=> delay = 0, delay)
       animateEle.className += " slide-left"
+
+
+      //show hobby
+      showHobby()
   }
 
-  if ( (windowHeight + window.scrollY) < (e.offsetTop + e.clientHeight) ) {
+  if ( (windowHeight + window.scrollY) < (e.offsetTop + e.clientHeight * .5) ) {
     document.querySelectorAll('#SKILL .my-experience.slide-left').forEach((e, i)=>{
       e.className = e.className.replace('slide-left', '');
     })
+    // hide hobby
+    hideHobby()
+    manual = false
+  }
+
+  if ( (windowHeight + window.scrollY) >= (document.body.clientHeight + 100) ) {
+    showHobby()
   }
       
 }
 
 // touch slide left
 let el = document.querySelector('#SKILL>.my-experience');
-document.addEventListener('touchstart', touchHandlerStart, false);
-document.addEventListener('touchmove', touchHandlerMove, false);
+el.addEventListener('touchstart', (evt)=>{
+  touchHandlerStart(evt)
+}, false);
+el.addEventListener('touchmove', (evt)=>{
+  touchHandlerMove(evt)
+}, false);
 let startX = 0
 let startY = 0
 let touchDelay = 0
 let log = document.getElementById('log')
 let touchHandlerStart = (evt)=>{
-  alert(1)
   startX = evt.pageX
   startY = evt.pageY
-  log.innerHTML += 'startX: ' + startX + ' startY: ' + startY;
 }
 
 let touchHandlerMove = (evt)=>{
-  if (touchDelay) {
-    return false
-  }
-  if ((evt.pageX - startX) > 20) {
-    slide(1)
-    log.innerHTML += '->right '
+  
+  // log.innerHTML += '---dv---:' + (evt.pageX - startX )
+
+  
+  if ((evt.pageX - startX) > 100) {
+    slideFn(-1)
 
   }
-  if ((evt.pageX - startX) < -20) {
-    slide(-1)
-    log.innerHTML += '<-left   '
+  if ((evt.pageX - startX) < -100) {
+    slideFn(1)
 
-  }
-  touchDelay = 1
-  setTimeout(()=> touchDelay = 0, 500)
+  } 
+
 }
 
 let slideFn = (n)=>{
-  let animateEles = document.querySelectorAll('#SKILL .my-experience:not(.slide-left)')
-  if (!animateEles[1])
+
+  if (touchDelay) {
     return false
-  let animateEle = animateEles[0]
+  }
+  let animateEles = []
+  let animateEle = null
   if (n == -1){
+    animateEles = document.querySelectorAll('#SKILL .my-experience.slide-left')
     animateEle = animateEles[animateEles.length - 1]
+     if (!animateEle)
+      return false
     animateEle.className = animateEle.className.replace('slide-left', '')
 
   } else {
+    animateEles = document.querySelectorAll('#SKILL .my-experience:not(.slide-left)')
+    if (!animateEles[1])
+      return false
+    animateEle = animateEles[0]
     animateEle.className += " slide-left"
   }
+  touchDelay = 1
+  setTimeout(()=> touchDelay = 0, 500)
+  manual = true
+  hideHobby()
 }
 
+let hobby = document.getElementById('HOBBY')
+let showHobby = ()=>{
+  hobby.style.maxHeight = '10rem';
+}
+let hideHobby = ()=>{
+  hobby.style.maxHeight = 0;
+}
 
 
 

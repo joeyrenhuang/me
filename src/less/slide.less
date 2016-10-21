@@ -67,7 +67,7 @@
   width: 45%;
   min-height: 3.5rem;
 
-  margin-top: .45rem;
+  margin-top: .6rem;
   background-position: center;   
   background-repeat: no-repeat;
   background-size: contain;
@@ -104,6 +104,40 @@
   }
 }
 
+.img-part {
+  font-size: .2rem;
+  color: @light-black;
+  li{
+    padding: .05rem 0;
+  }
+  .fa{
+    color: @light-sky-blue;
+    margin-right: .05rem;
+  }
+  .icon-row {
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    top: 3rem;
+    font-size: .16rem;
+    color: @light-blue-hover;
+    .fa{
+      color: green;
+
+    }
+    .red .fa{
+      float: right;
+      margin: 0 .05rem;
+      color: @dark-grey;
+      &:hover{
+        color: red;
+      }
+    }
+    a:visited .fa{
+      color: red;
+    }
+  }
+}
 
 
 @media (max-width: 975px) {
