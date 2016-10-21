@@ -126,7 +126,7 @@ let scrollMyExperience = (evt)=>{
       evt.preventDefault()
       evt.stopPropagation()
 
-      delay = 200
+      delay = 1000
       setTimeout(()=> delay = 0, delay)
       animateEle.className += " slide-left"
   }
@@ -137,6 +137,53 @@ let scrollMyExperience = (evt)=>{
     })
   }
       
+}
+
+// touch slide left
+let el = document.querySelector('#SKILL>.my-experience');
+document.addEventListener('touchstart', touchHandlerStart, false);
+document.addEventListener('touchmove', touchHandlerMove, false);
+let startX = 0
+let startY = 0
+let touchDelay = 0
+let log = document.getElementById('log')
+let touchHandlerStart = (evt)=>{
+  alert(1)
+  startX = evt.pageX
+  startY = evt.pageY
+  log.innerHTML += 'startX: ' + startX + ' startY: ' + startY;
+}
+
+let touchHandlerMove = (evt)=>{
+  if (touchDelay) {
+    return false
+  }
+  if ((evt.pageX - startX) > 20) {
+    slide(1)
+    log.innerHTML += '->right '
+
+  }
+  if ((evt.pageX - startX) < -20) {
+    slide(-1)
+    log.innerHTML += '<-left   '
+
+  }
+  touchDelay = 1
+  setTimeout(()=> touchDelay = 0, 500)
+}
+
+let slideFn = (n)=>{
+  let animateEles = document.querySelectorAll('#SKILL .my-experience:not(.slide-left)')
+  if (!animateEles[1])
+    return false
+  let animateEle = animateEles[0]
+  if (n == -1){
+    animateEle = animateEles[animateEles.length - 1]
+    animateEle.className = animateEle.className.replace('slide-left', '')
+
+  } else {
+    animateEle.className += " slide-left"
+  }
 }
 
 

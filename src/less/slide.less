@@ -25,6 +25,7 @@
     max-width: 8rem;
 }
 .text-part {
+  position: relative;
   width: 3.7rem;
   margin-top: .45rem;
   float: left;
@@ -61,10 +62,10 @@
 
 
 .img-part{
+  position: relative;
   float: right;
-  min-height: 100%;
   width: 45%;
-  height: 4rem;
+  min-height: 3.5rem;
 
   margin-top: .45rem;
   background-position: center;   
@@ -85,6 +86,14 @@
     background: url("../img/suzhoumap.png") top center no-repeat;
   }
 
+  &.condo{
+    background: url("../img/condo.png") top center no-repeat;
+  }
+  &.bayofmoon{
+    background: url("../img/bayofmoon.png") top center no-repeat;
+    background-size: 4rem;
+  }
+
 }
 .slide.reverse{
   .text-part{
@@ -99,19 +108,19 @@
 
 @media (max-width: 975px) {
   .slide {
-    .text-part {
+    .text-part, .img-part {
+
       text-align: center;
-      width: 100%;
-      padding-left: .15rem;
-      padding-right: .15rem;
       float: none;
-    }
-    .right-part {
-      float: none;
-      text-align: center;
       margin: 0 auto;
-      float: none;
       min-width: 4rem;
+    }
+    .text-part {
+      min-width: 80%;
+    }
+    &.reverse .text-part,
+    &.reverse .img-part {
+      float: none;
     }
   }
 }
