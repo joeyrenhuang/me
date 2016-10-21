@@ -1,8 +1,9 @@
 #HOBBY{
-  overflow-y: hidden;
+  position: relative;
   max-height: 0;
+  overflow: hidden;
+  transition: all 3s linear;
   font-family: 'Dancing Script', cursive;
-  transition: all 5s linear;
   .text-part {
     h1{
       font-family: 'Dancing Script', cursive;
@@ -15,5 +16,77 @@
   }
   .img-part .fa{
     color: @dark-green;
+  }
+}
+
+#PLAYNOW {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: .65rem;
+  text-align: center;
+  background-color: @light-white;
+  color: @light-grey;
+  opacity: .5;
+  z-index: 1;
+  .fa{
+    position: absolute;
+    top: 40%; 
+    left: 45%;   
+    border: 5px solid @light-grey;
+    width: .8rem;
+    height: 1rem;
+    line-height: 1rem;
+    border-radius: 50%;
+    text-align: center;
+    padding-left: .2rem;
+  }
+  &:hover{
+    color: @sky-blue;
+    .fa {
+      border-color: @light-green;
+    }
+    .fa {
+      animation: colorswitch 10s linear infinite;
+    }
+  }
+}
+@-webkit-keyframes colorswitch {
+  0{
+    transform: rotateZ(0deg);
+    color: @sky-blue;
+    border-color: @light-green;
+  }
+  25%{
+    color: rgba(255, 55, 55, .5);
+  }
+  50% {
+    color: @light-green;
+    border-color: @light-blue;
+  }
+  75%{
+    color: rgba(255, 55, 55, .5);
+  }
+  100% {
+    border-color: @light-green;
+    color: @sky-blue;
+    transform: rotateZ(360deg);
+  }
+
+}
+.slide-container{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 1000%;
+  height: 100%;
+  .slide{
+    display: table-cell;
+    float: left;
+    >div{
+      float: left;
+    }
   }
 }

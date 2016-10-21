@@ -30,7 +30,7 @@ setInterval(function(){
   if (progress)
     return 0
   setSlideContent(1)
-}, 5000)
+}, 8000)
 window.setSlideContent = function(l, k){
   
   progress = true
@@ -96,7 +96,6 @@ window.addEventListener('scroll', (evt)=>{
 })
 
 
-let delay = 0
 let preScrollY = 0
 let manual = false
 let scrollMyExperience = (evt)=>{
@@ -111,33 +110,18 @@ let scrollMyExperience = (evt)=>{
       || document.documentElement.clientHeight
       || document.body.clientHeight;
 
-  if  ( dY >= 20 
-    && ( (windowHeight + window.scrollY) > (e.offsetTop + e.clientHeight * 1.5) || ( (windowHeight + window.scrollY) >= (document.body.clientHeight - 50) ) ) ) {
+  if  ( dY >= 10 
+    && ( (windowHeight + window.scrollY) > (e.offsetTop + e.clientHeight * 1) || ( (windowHeight + window.scrollY) >= (document.body.clientHeight - 100) ) ) ) {
 
       if(manual){
         return 0;
       }
 
-      let animateEles = document.querySelectorAll('#SKILL .my-experience:not(.slide-left)')
-      if (!animateEles[1])
-        return false
-      let animateEle = animateEles[0]
-
-      if (delay) {
-         evt.preventDefault()
-         evt.stopPropagation()
-         return false
-      }
-      evt.preventDefault()
-      evt.stopPropagation()
-
-      delay = 1000
-      setTimeout(()=> delay = 0, delay)
-      animateEle.className += " slide-left"
-
+      let flag = slideFn(1)
 
       //show hobby
-      showHobby()
+      !flag && showHobby()
+      
   }
 
   if ( (windowHeight + window.scrollY) < (e.offsetTop + e.clientHeight * .5) ) {
@@ -149,7 +133,7 @@ let scrollMyExperience = (evt)=>{
     manual = false
   }
 
-  if ( (windowHeight + window.scrollY) >= (document.body.clientHeight + 100) ) {
+  if ( (windowHeight + window.scrollY) >= (document.body.clientHeight) ) {
     showHobby()
   }
       
@@ -179,19 +163,23 @@ let touchHandlerMove = (evt)=>{
   
   if ((evt.pageX - startX) > 100) {
     slideFn(-1)
+    manual = true
+
 
   }
   if ((evt.pageX - startX) < -100) {
     slideFn(1)
+    manual = true
 
-  } 
+  }
+
 
 }
 
 let slideFn = (n)=>{
 
   if (touchDelay) {
-    return false
+    return true
   }
   let animateEles = []
   let animateEle = null
@@ -211,8 +199,7 @@ let slideFn = (n)=>{
   }
   touchDelay = 1
   setTimeout(()=> touchDelay = 0, 500)
-  manual = true
-  hideHobby()
+  return true
 }
 
 let hobby = document.getElementById('HOBBY')
@@ -225,3 +212,22 @@ let hideHobby = ()=>{
 
 
 
+// hobby slide
+
+
+document.querySelector('#PLAYNOW .fa').addEventListener('click', function(){
+  this.className = 'fa fa-pause'
+
+  let slide = document.querySelector('#HOBBY .slide-container')
+  let tpt = document.querySelector('#HOBBY>.slide')
+  let s = [tpt]
+  s.forEach((e, i)=>{
+    // e.style.transform = 'translateX(' + slide.childNodes.length * -100/2 + '%)';
+    
+    e.style.transform = 'translateX(' + slide.childNodes.length * -100/2 + '%)';
+    e.style.transition =  'all 5' + 's linear';
+  })
+  slide.style.left =   '-150%'
+  slide.style.transition =  'all 10' + 's linear';
+
+})
