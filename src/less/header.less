@@ -82,3 +82,28 @@ header
     }
   }
 }
+
+.fa.fa-signal{
+  margin: .2rem 0 0 .4rem;
+  font-size: .26rem;
+  color: @light-blue;
+  &:hover{
+    color: @light-blue-hover;
+  }
+  &.active{
+    color: @dark-green;
+  }
+  &.active:before{
+    overflow: hidden;
+    display: inline-block;
+    animation: showonwidth 2s linear infinite;
+  }
+}
+@-webkit-keyframes showonwidth {
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 100%;
+  }
+}

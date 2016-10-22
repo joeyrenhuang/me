@@ -3,7 +3,6 @@ var path = require('path')
 var assetsPath = function (_path) {
   return path.posix.join('static', _path)
 }
-console.log(__dirname)
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 let extractLESS = new ExtractTextPlugin('static/css/[name].css');
@@ -42,6 +41,15 @@ module.exports = {
           limit: 10000,
           // name: 'img/[name].[ext]?[hash]'
           name: assetsPath('img/[name].[ext]?[hash]')
+        }
+      },
+      {
+        test: /\.(mp3)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 100000,
+          // name: 'img/[name].[ext]?[hash]'
+          name: assetsPath('media/[name].[ext]?[hash]')
         }
       },
       {
