@@ -2,7 +2,7 @@
   position: relative;
   max-height: 0;
   overflow: hidden;
-  transition: all 3s linear;
+  transition: all 3s cubic-bezier(.95, .05, .95, .05);
   font-family: 'Dancing Script', cursive;
   .text-part {
     h1{
@@ -29,28 +29,41 @@
   text-align: center;
   background-color: @light-white;
   color: @light-grey;
-  opacity: .5;
+  opacity: 0;
   z-index: 1;
   .fa{
     position: absolute;
     top: 40%; 
     left: 45%;   
-    border: 5px solid @light-grey;
+    border: 10px solid @light-grey;
     width: .8rem;
     height: 1rem;
     line-height: 1rem;
     border-radius: 50%;
     text-align: center;
     padding-left: .2rem;
+    background-color: @green;
+
   }
-  &:hover{
+  &:hover, &.finger-hover{
+    opacity: 1;
     color: @sky-blue;
     .fa {
+      &.disabled{
+        color: @grey;
+        border-color: @grey;
+        background-color: transparent;
+
+      }
       border-color: @light-green;
     }
-    .fa {
+    .fa:not(.disabled) {
       animation: colorswitch 10s linear infinite;
     }
+  }
+  .fa-pause{
+    padding-left: 0rem;
+    width: 1rem;
   }
 }
 @-webkit-keyframes colorswitch {
@@ -76,17 +89,13 @@
   }
 
 }
-.slide-container{
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 1000%;
-  height: 100%;
-  .slide{
-    display: table-cell;
+.slide-movie{
+  width: 10000%;
+  min-height: 4.5rem;
+  .slide-container{
+    width: 1%;
+    margin: 0;
     float: left;
-    >div{
-      float: left;
-    }
+    max-width: 1%;
   }
 }
