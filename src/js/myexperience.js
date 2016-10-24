@@ -14,7 +14,6 @@ export default ({bottom, top, DY})=>{
       document.querySelectorAll('#SKILL .my-experience.slide-left').forEach((e, i)=>{
         e.className = e.className.replace('slide-left', '');
       })
-      manual = false
     }
 }
 

@@ -22,11 +22,15 @@
 .slide {
     margin: 0 auto;
     min-height: 5rem;
-    max-width: 8rem;
+    max-width: 15rem;
 }
+
+
+
+
 .text-part {
   position: relative;
-  width: 3.7rem;
+  width: 45%;
   margin-top: .45rem;
   float: left;
   h1 {
@@ -102,6 +106,18 @@
     background: url("../img/leagueoflegends.png") top center no-repeat;
     background-size: 4rem;
   }
+  &.walking{
+    background: url("../img/walking.png") top center no-repeat;
+    background-size: 4rem;
+  }
+  &.family{
+    background: url("../img/family.png") top center no-repeat;
+    background-size: 4rem;
+  }
+  &.LY{
+    background: url("../img/LY.png") top center no-repeat;
+    background-size: 4rem;
+  }
 }
 .slide.reverse{
   .text-part{
@@ -148,6 +164,28 @@
 }
 
 
+
+
+@media (max-width: 1920px) {
+  .slide{
+    max-width: 12rem;
+  }
+}
+@media (max-width: 1680px) {
+  .slide{
+    max-width: 10rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .slide{
+    max-width: 8rem;
+  }
+}
+
+
+
+// ipad 9 inch
 @media (max-width: 975px) {
   .slide {
     .text-part, .img-part {
@@ -166,5 +204,3 @@
     }
   }
 }
-
-
