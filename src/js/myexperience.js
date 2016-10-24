@@ -40,13 +40,13 @@ let touchHandlerMove = (evt)=>{
   // log.innerHTML += '---dv---:' + (evt.pageX - startX )
 
   
-  if ((evt.pageX - startX) > 100) {
+  if ((evt.pageX - startX) > 50) {
     slideFn(-1)
     manual = true
 
 
   }
-  if ((evt.pageX - startX) < -100) {
+  if ((evt.pageX - startX) < -50) {
     slideFn(1)
     manual = true
 
@@ -77,6 +77,6 @@ let slideFn = (n)=>{
     animateEle.className += " slide-left"
   }
   touchDelay = 1
-  setTimeout(()=> touchDelay = 0, 3000)
+  setTimeout(()=> touchDelay = 0, 1500)
   return true
 }
